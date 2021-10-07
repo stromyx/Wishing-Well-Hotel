@@ -8,9 +8,12 @@ public class ButtonController : MonoBehaviour
     public GameObject itemsToHide;
     public GameObject itemsToShow;
     public GameObject itemsToTransform;
+    public GameObject player;
     [SerializeField] float cd;
     public bool isHide = false;
     public Transform backpack;
+
+
 
 
 
@@ -40,7 +43,7 @@ public class ButtonController : MonoBehaviour
                 GoToRoomTwo();
                 break;
             case 3:
-                HideItems();
+                GetItem();
                 break;
             case 4:
                 ShowIt();
@@ -51,10 +54,10 @@ public class ButtonController : MonoBehaviour
         }
     }
 
-    // public void GetItems()
-    // {
-
-    // }
+    public void GetItem()
+    {
+        player.SetActive(true);
+    }
 
     public void HideItems()
     {

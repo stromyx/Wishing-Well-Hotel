@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static Player Instance { get; private set; }
+    private Inventory inventory;
+    [SerializeField] private UI_Inventory uI_Inventory;
+
+    //public Item item;
+
+    private void Start()
     {
-        
+        Instance = this;
+        inventory = new Inventory();
+        uI_Inventory.SetInventory(inventory);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GetItemToInventory()
     {
-        
+        inventory.AddItem(ItemWorld.Instance.GetItem());
+        ItemWorld.Instance.DestroySelf();
+        //Debug.Log(item.amount);
     }
+
+    private void Update()
+    {
+        uI_Inventory.SetInventory(inventory);
+    }
+
 }
